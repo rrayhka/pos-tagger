@@ -48,8 +48,135 @@
         .results span {
             display: inline-block;
             padding: 5px;
-            margin-right: 5px;
-            background: #e2e2e2;
+            margin-right: 3.5px;
+            margin-bottom: 6.5px;
+            border-radius: 4px;
+
+        }
+
+        .PPO {
+            background-color: #ffadad;
+            color: #000;
+        }
+
+        .KUA {
+            background-color: #ffd6a5;
+            color: #000;
+        }
+
+        .ADV {
+            background-color: #fdffb6;
+            color: #000;
+        }
+
+        .PRN {
+            background-color: #caffbf;
+            color: #000;
+        }
+
+        .VBI {
+            background-color: #9bf6ff;
+            color: #000;
+        }
+
+        .PAR {
+            background-color: #a0c4ff;
+            color: #000;
+        }
+
+        .VBP {
+            background-color: #bdb2ff;
+            color: #000;
+        }
+
+        .NNP {
+            background-color: #ffc6ff;
+            color: #000;
+        }
+
+        .UNS {
+            background-color: #fffffc;
+            color: #000;
+        }
+
+        .VBT {
+            background-color: #d0f4de;
+            color: #000;
+        }
+
+        .VBL {
+            background-color: #a2d2ff;
+            color: #000;
+        }
+
+        .NNO {
+            background-color: #ffadad;
+            color: #000;
+        }
+
+        .ADJ {
+            background-color: #ffd6a5;
+            color: #000;
+        }
+
+        .PRR {
+            background-color: #fdffb6;
+            color: #000;
+        }
+
+        .PRK {
+            background-color: #caffbf;
+            color: #000;
+        }
+
+        .CCN {
+            background-color: #9bf6ff;
+            color: #000;
+        }
+
+        .ADK {
+            background-color: #bdb2ff;
+            color: #000;
+        }
+
+        .ART {
+            background-color: #ffc6ff;
+            color: #000;
+        }
+
+        .CSN {
+            background-color: #979745;
+            color: #000;
+        }
+
+        .NUM {
+            background-color: #d0f4de;
+            color: #000;
+        }
+
+        .SYM {
+            background-color: #a2d2ff;
+            color: #000;
+        }
+
+        .INT {
+            background-color: #ffadad;
+            color: #000;
+        }
+
+        .NEG {
+            background-color: #ffd6a5;
+            color: #000;
+        }
+
+        .PRI {
+            background-color: #fdffb6;
+            color: #000;
+        }
+
+        .VBE {
+            background-color: #caffbf;
+            color: #000;
         }
     </style>
 </head>
@@ -58,7 +185,7 @@
     <div class="container">
         <h1>POS Tagger</h1>
         <form id="posForm">
-            <textarea id="textInput" placeholder="Masukkan teks bahasa Indonesia di sini"></textarea>
+            <textarea id="textInput" placeholder="Masukkan teks bahasa Indonesia di sini" required></textarea>
             <button type="submit">Tag POS</button>
         </form>
         <div class="results" id="results"></div>
@@ -67,7 +194,7 @@
         document.getElementById('posForm').addEventListener('submit', async function (e) {
             e.preventDefault();
             const text = document.getElementById('textInput').value;
-            const response = await fetch('http://localhost:5007/pos_tag', {
+            const response = await fetch('http://127.0.0.1:5007/pos_tag', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -80,6 +207,7 @@
             data.tagged_tokens.forEach(token => {
                 const span = document.createElement('span');
                 span.textContent = `${token.word} (${token.tag})`;
+                span.className = token.tag;
                 resultsDiv.appendChild(span);
             });
         });
