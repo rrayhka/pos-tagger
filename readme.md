@@ -1,4 +1,3 @@
-
 ---
 
 # POS Tagger
@@ -62,6 +61,10 @@ python app.py
 2. Masukkan teks bahasa Indonesia di textarea yang disediakan.
 3. Klik tombol "Tag POS".
 4. Hasil POS tagging akan ditampilkan di bawah form input.
+
+## Hasil
+![hasil](static/result.png)
+
 
 ## Kontribusi
 
